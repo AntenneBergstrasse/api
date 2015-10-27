@@ -40,5 +40,19 @@ $cams = Array();
 //Add a line like this for every cam
 $cams[] = Array("id"=>1, "name"=>"Name", "url"=> "URL");
 
-?>
 
+/*
+ * ===============================================================================================
+ * Streams
+ * ===============================================================================================
+ */
+
+//Change visibility of all steams at once without the need to remove the settings
+//To change the visibilit individually, just (un)comment the corresponding line
+$streams_active = true;
+
+$streams = Array();
+//Add a line like this for every stream
+$streams[] = Array("id"=>1, "name"=>"Name", "url"=> "URL", "format"=>"", "bitrate"=>"");
+
+?>
