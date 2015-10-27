@@ -7,6 +7,8 @@
  * @version 0.1
  */
 
+header('Content-Type: application/json;charset=UTF-8');
+
 require_once("settings.php");
 
 if(!isset($cams_active) || !$cams_active)

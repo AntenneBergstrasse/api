@@ -9,6 +9,8 @@
  * @version 0.1a (stub)
  */
 
+header('Content-Type: application/json;charset=UTF-8');
+
 $news_entry = Array(
     "id" => 123,
     "headline" => "Headline",
