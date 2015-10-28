@@ -48,7 +48,7 @@ else
     $date_id = $row['id'];
     $date = new DateTime(sprintf("%d-%d-%d 00:00:00", $date_array[0], $date_array[1], $date_array[2]));
 
-    $res = $conn->query(sprintf("SELECT `show`.`id`, `rail`.`name`, `show`.`name` AS `description`, time_start, time_end FROM `show`, `rail` WHERE `date_id` = 60 AND `rail`.`id` = rail_id ORDER BY `show`.`id` ASC;", $date_id));
+    $res = $conn->query(sprintf("SELECT `show`.`id`, `rail`.`name` AS railname, `show`.`name` AS showname, `rail`.`description` AS raildescription, `show`.`description` AS showdescription, time_start, time_end FROM `show`, `rail` WHERE `date_id` = %d AND `rail`.`id` = rail_id ORDER BY `rail`.`time_start` ASC", $date_id));
 
     if(!$res)
     {
@@ -63,10 +63,11 @@ else
         //Create an entry for every result...
         $schedule_item = Array(
             "id" => $row["id"],
-            "subject" => utf8_encode($row["name"]),
-            "description" => utf8_encode($row["description"]),
+            "subject" => utf8_encode($row["showname"]),
+            "description" => utf8_encode($row["showdescription"]),
             "start" => convertTimeToTimestamp($row["time_start"], $date),
-            "end" => convertTimeToTimestamp($row["time_end"], $date)
+            "end" => convertTimeToTimestamp($row["time_end"], $date),
+            "redaktionen" => Array("name"=> utf8_encode(html_entity_decode($row["railname"])), "description"=>utf8_encode($row["raildescription"]))
         );
 
         //...store it...
