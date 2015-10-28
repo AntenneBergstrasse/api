@@ -18,13 +18,14 @@ $res = $conn->query("SELECT artist, title FROM logging WHERE ((active = 1 AND DA
 
 if(!$res)
 {
-    echo "Kein Titel";
+    echo "[]";
 }
 else
 {
     $row = $res->fetch_assoc();
-    echo $row['artist']." - ".$row['title'];
+    $song = Array("id"=>0, "title"=>utf8_encode($row['title']), "artist"=>utf8_encode($row['artist']), "cover"=>"");
+    echo json_encode($song);
 }
 $conn->close();
-?>
 
+?>
