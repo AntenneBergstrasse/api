@@ -33,7 +33,7 @@ $databases["music"]["name"] = "database_name";
  */
 
 //Change visibility of all cams at once without the need to remove the settings
-//To change the visibilit individually, just (un)comment the corresponding line
+//To change the visibility individually, just (un)comment the corresponding line
 $cams_active = true;
 
 $cams = Array();
